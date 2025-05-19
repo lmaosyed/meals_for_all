@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Meals for All</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .login-button {
+      display: block;
+      margin: 100px auto;
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: olive;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .login-box {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .login-box input {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 200px;
+    }
+    .request-box {
+      background: #f4fff4;
+      padding: 15px;
+      margin: 15px 0;
+      border-left: 5px solid olive;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <a href="index.html">Home</a>
+    <a href="restaurant.html">Restaurant</a>
+    <a href="charity.html">Charity</a>
+    <a href="admin.html" class="active">Admin Panel</a>
+  </div>
+
+  <div class="main">
+    <h1 class="header">Meals for All</h1>
+    <button class="login-button" onclick="showLogin()">Login</button>
+
+    <div id="login-form" class="login-box" style="display:none;">
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="checkLogin()">Submit</button>
+      <p id="login-error" style="color:red;"></p>
+    </div>
+
+    <div id="admin-content" style="display:none;">
+      <h2>Submitted Requests</h2>
+      <h3>Restaurants</h3>
+      <div class="request-box">
+        <strong>Name:</strong> FoodHeaven<br>
+        <strong>Address:</strong> MG Road<br>
+        <strong>Food Item:</strong> Rice Packets<br>
+        <strong>Quantity:</strong> 50<br>
+        <strong>Contact:</strong> 9876543210
+      </div>
+      <h3>Charities</h3>
+      <div class="request-box">
+        <strong>Name:</strong> Helping Hands<br>
+        <strong>Address:</strong> Indiranagar<br>
+        <strong>Food for:</strong> 30 people<br>
+        <strong>Contact:</strong> 9123456780
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showLogin() {
+      document.querySelector(".login-button").style.display = "none";
+      document.getElementById("login-form").style.display = "block";
+    }
+
+    function checkLogin() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+
+      if (user === "admin" && pass === "admin") {
+        document.getElementById("login-form").style.display = "none";
+        document.getElementById("admin-content").style.display = "block";
+      } else {
+        document.getElementById("login-error").textContent = "Invalid username or password";
+      }
+    }
+  </script>
+</body>
+</html>
+
